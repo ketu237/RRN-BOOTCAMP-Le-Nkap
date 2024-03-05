@@ -17,9 +17,9 @@ const SignUpForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [apiErrorMessage, setApiErrorMessage] = useState(null); // State to manage API error message
-  const [successMessage, setSuccessMessage] = useState(null); // State to hold success message
-  const [isLoading, setIsLoading] = useState(false); // State to manage loading state
+  const [apiErrorMessage, setApiErrorMessage] = useState(null); 
+  const [successMessage, setSuccessMessage] = useState(null); 
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,23 +29,23 @@ const SignUpForm = () => {
     });
     setErrors({
       ...errors,
-      [name]: '' // Clear specific form field error when user starts filling the form again
+      [name]: '' 
     });
-    setApiErrorMessage(null); // Clear API error message when user starts filling the form again
+    setApiErrorMessage(null); 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
-      setIsLoading(true); // Set loading state to true
-      setErrors({}); // Clear all form errors when user submits corrected data
+      setIsLoading(true); 
+      setErrors({}); 
       axios.post('https://le-nkap-v1.onrender.com/users', formData)
         .then(res => {
           console.log(res);
           setSuccessMessage('Successful Registration!');
           setTimeout(() => {
-            navigate('/login'); // Use navigate to redirect to login page after a delay
+            navigate('/login'); 
           }, 2000);
         })
         .catch(err => {
@@ -59,7 +59,7 @@ const SignUpForm = () => {
           }
         })
         .finally(() => {
-          setIsLoading(false); // Set loading state to false after request completion
+          setIsLoading(false);
         });
     } else {
       setErrors(validationErrors);
@@ -97,7 +97,7 @@ const SignUpForm = () => {
         <div className="grid grid-cols-2 ">
           <div className="relative col-span-1 hidden md:block">
             <div className="absolute inset-0 bg-grey-300">
-              <img className="h-full w-full object-cover" src={bgImage} alt='' />
+              <img className="h-full w-full object-cover" src={bgImage} alt='yoo' />
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 p-8">
